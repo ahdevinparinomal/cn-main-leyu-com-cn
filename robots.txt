@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ahdevinparinomal.github.io/cn-main-leyu-com-cn/sitemap.xml
