@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5e对战平台 · 日常查询与延伸阅读</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fbe9e0 0%, #f8d5c4 60%, #f2c8b4 100%);
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      line-height: 1.7;
+      color: #3e2e28;
+    }
+
+    .card {
+      max-width: 920px;
+      width: 100%;
+      background: rgba(255, 250, 245, 0.92);
+      backdrop-filter: blur(4px);
+      border-radius: 40px 16px 40px 16px;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 20px 36px -10px rgba(120, 70, 50, 0.25), 0 8px 12px -4px rgba(60, 30, 20, 0.08);
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      .card { padding: 2rem 1.4rem; border-radius: 28px 12px 28px 12px; }
+    }
+
+    .hero {
+      margin-bottom: 2.6rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #6d4c3c, #a1725a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #5b4238;
+      max-width: 640px;
+      margin: 0 auto 0.4rem;
+      background: #f7ece6;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .tagline {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #7b6052;
+      margin-bottom: 2.2rem;
+      border-bottom: 1px dashed #e3cfc2;
+      padding-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 520;
+      color: #5c3f32;
+      margin: 2rem 0 0.8rem 0;
+      display: inline-block;
+      border-left: 6px solid #dbb6a4;
+      padding-left: 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .intro-text {
+      background: #fbf4ef;
+      padding: 1.2rem 1.6rem;
+      border-radius: 32px 8px 32px 8px;
+      margin-bottom: 1.8rem;
+      color: #4d372e;
+      font-size: 1rem;
+      box-shadow: 0 2px 6px rgba(150, 100, 70, 0.06);
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin: 1.2rem 0 0.6rem 0;
+    }
+
+    .highlight-item {
+      background: #fff9f5;
+      border-radius: 24px 8px 24px 8px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 2px 8px rgba(110, 70, 50, 0.06);
+      transition: transform 0.15s, box-shadow 0.15s;
+      border: 1px solid #f0ded5;
+    }
+
+    .highlight-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px -6px rgba(90, 60, 40, 0.15);
+    }
+
+    .highlight-item strong {
+      display: block;
+      font-weight: 550;
+      color: #6f4f3e;
+      margin-bottom: 0.25rem;
+      font-size: 1.02rem;
+    }
+
+    .highlight-item span {
+      font-size: 0.92rem;
+      color: #5e4439;
+    }
+
+    .usage-note {
+      background: #f3e5dd;
+      border-radius: 28px 8px 28px 8px;
+      padding: 1.2rem 1.6rem;
+      margin: 1.8rem 0 1rem 0;
+      border: 1px solid #e6d3c8;
+    }
+
+    .usage-note p {
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-mini {
+      margin: 1.8rem 0 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .faq-item {
+      background: #fffbf9;
+      border-radius: 20px 6px 20px 6px;
+      padding: 0.9rem 1.4rem;
+      border-left: 4px solid #dbb6a4;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .faq-item q {
+      font-weight: 490;
+      color: #4b342b;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item p {
+      font-size: 0.94rem;
+      color: #5f463b;
+      margin: 0;
+    }
+
+    .link-badge {
+      display: inline-block;
+      background: #dbb6a4;
+      color: #2f201a;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      font-weight: 480;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 6px rgba(150, 100, 70, 0.1);
+      margin: 0 0.2rem;
+      line-height: 1.6;
+    }
+
+    .link-badge:hover {
+      background: #caa894;
+      box-shadow: 0 4px 10px rgba(130, 80, 55, 0.18);
+      text-decoration: none;
+    }
+
+    .note-mild {
+      font-size: 0.9rem;
+      color: #7a6458;
+      background: #f5ece7;
+      border-radius: 30px;
+      padding: 0.5rem 1.2rem;
+      text-align: center;
+      margin-top: 2rem;
+      border: 1px solid #e8d9d0;
+    }
+
+    a {
+      color: #7b5a49;
+      text-decoration: none;
+      transition: 0.15s;
+    }
+
+    a:hover {
+      color: #4d352b;
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      font-size: 0.88rem;
+      text-align: center;
+      color: #8f7566;
+      border-top: 1px solid #e5d3c8;
+      padding-top: 1.4rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="hero">
+      <h1>5e对战平台</h1>
+      <p>日常查询 · 对照 · 延伸阅读</p>
+    </div>
+    <div class="tagline">
+      从检索到理解，让信息自然衔接
+    </div>
+
+    <!-- 摘要 -->
+    <div class="intro-text">
+      <p><strong>不止于入口，更是信息锚点。</strong> 无论你是在查找某个对局数据、回顾历史记录，还是希望横向对比不同赛季的表现，<a href="https://index-5e.com" class="link-badge">5e对战平台</a> 都可以作为一个稳定的查询起点。我们不强调“唯一”或“官方”，只把它当作一个熟悉的索引——在你需要查阅、对照或梳理细节的时候，多一个可靠的参照。</p>
+    </div>
+
+    <!-- 亮点 -->
+    <div class="section-title">日常使用中常见的亮点</div>
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <strong>📋 查询顺手</strong>
+        <span>数据展示清晰，可以快速定位到具体对局或选手信息，减少翻找成本。</span>
+      </div>
+      <div class="highlight-item">
+        <strong>🔁 对照方便</strong>
+        <span>支持多维度筛选，适合边看边对比，比如把不同时间段的记录放在一起观察。</span>
+      </div>
+      <div class="highlight-item">
+        <strong>📎 信息延展</strong>
+        <span>页面内常附带相关链接或参考条目，方便做延伸阅读，不需跳转多次。</span>
+      </div>
+      <div class="highlight-item">
+        <strong>🧩 轻量参照</strong>
+        <span>结构偏平实，不会过于复杂，适合日常快速查阅，也适合做资料对照。</span>
+      </div>
+    </div>
+
+    <!-- 使用建议 -->
+    <div class="section-title">使用建议 · 怎样更顺手</div>
+    <div class="usage-note">
+      <p>🔹 <strong>日常查询</strong>：如果想核对某个比赛记录或选手历史，可以直接在 <a href="https://index-5e.com" class="link-badge">5e对战平台</a> 的列表页按条件搜索，结果页一般附带简要统计，适合粗筛。</p>
+      <p>🔹 <strong>对照阅读</strong>：如果你同时打开多个标签页做横向对比，可以手动记下关键时间点或比分，平台的数据更新节奏相对稳定，适合做参照。</p>
+      <p>🔹 <strong>延伸了解</strong>：如果发现某些条目附带链接或相关推荐，不妨点开看看，有时能顺藤摸瓜找到一些背景信息或过往记录，对理解上下文有帮助。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="section-title">你可能想了解的 · FAQ 摘要</div>
+    <div class="faq-mini">
+      <div class="faq-item">
+        <q>这个站点和“官方”是什么关系？</q>
+        <p>它是一个由社区或平台方维护的信息整合页面，你可以把它当作一个自己常用的查询锚点，不夸大其权威性，但胜在方便和稳定。</p>
+      </div>
+      <div class="faq-item">
+        <q>数据更新频率怎么样？</q>
+        <p>根据观察，数据会按周期刷新（通常是一天到数天），具体视比赛或记录的新旧程度而定。日常查询基本够用，特别实时的需求建议再交叉比对。</p>
+      </div>
+      <div class="faq-item">
+        <q>移动端使用体验如何？</q>
+        <p>页面针对触摸操作做了基础适配，卡片和列表的字体大小适中，横竖屏都可以正常查阅，不过部分筛选控件在窄屏上会折叠，习惯就好。</p>
+      </div>
+    </div>
+
+    <!-- 可信但克制的说明 -->
+    <div class="note-mild">
+      ⚖️ 以上内容仅作信息参考，不构成“唯一来源”或“官方定义”的暗示。查询结果请以实际页面为准，建议根据个人需要交叉验证。
+    </div>
+
+    <div class="footer-note">
+      你可以把 <a href="https://index-5e.com" style="font-weight: 480; border-bottom: 1px dotted #bea99a;">5e对战平台</a> 当作一个日常翻阅的起点——不必给它太多标签，好用即可。
+    </div>
+  </div>
+</body>
+</html>
