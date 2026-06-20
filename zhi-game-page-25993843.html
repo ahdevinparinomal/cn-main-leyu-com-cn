@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 持续发现游戏乐趣</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fbfbfb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      color: #1e1e1e;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.4rem 1.5rem 3rem;
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      margin-top: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #111;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: #444;
+      max-width: 540px;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      margin-top: 1.4rem;
+      background: #eef2f5;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #2b4d5c;
+    }
+
+    /* ---------- section ---------- */
+    section {
+      margin-bottom: 2.8rem;
+    }
+
+    section h2 {
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid #dde3e8;
+      color: #1d2b33;
+    }
+
+    section h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-top: 1.4rem;
+      margin-bottom: 0.4rem;
+      color: #1f3b47;
+    }
+
+    p, li {
+      font-size: 0.98rem;
+      color: #2c3e4b;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    li::before {
+      content: "·";
+      position: absolute;
+      left: 0.2rem;
+      color: #7b96a8;
+      font-weight: bold;
+    }
+
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .card {
+      flex: 1 1 180px;
+      background-color: #ffffff;
+      padding: 1.1rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #e9edf0;
+    }
+
+    .card .emoji {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .card .card-title {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      color: #1d2f3a;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #546e7a;
+      margin-top: 0.2rem;
+    }
+
+    /* ---------- faq ---------- */
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+      color: #1e3d4c;
+    }
+
+    .faq-item p {
+      margin-left: 0;
+      color: #3a535f;
+    }
+
+    /* ---------- link ---------- */
+    .inline-link a {
+      color: #1e6b7c;
+      text-decoration: none;
+      border-bottom: 1px solid #b7cdd8;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .inline-link a:hover {
+      color: #0b4a58;
+      border-bottom-color: #0b4a58;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e3e9ef;
+      font-size: 0.85rem;
+      color: #6a7e8b;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: space-between;
+    }
+
+    .footer-note span {
+      opacity: 0.7;
+    }
+
+    .footer-note a {
+      color: #2f5d6b;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #2f5d6b;
+    }
+
+    .bookmark-reminder {
+      background: #f2f6f9;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+      margin: 1.6rem 0 2rem;
+      font-size: 0.95rem;
+      color: #1d3947;
+      border-left: 3px solid #5e8f9f;
+    }
+
+    .bookmark-reminder a {
+      color: #1f6a7c;
+      text-decoration: none;
+      border-bottom: 1px solid #95b7c5;
+    }
+
+    .bookmark-reminder a:hover {
+      border-bottom-color: #1f6a7c;
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 1.6rem 1rem 2.4rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .card {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+      <h1>再次回到这里<br>为下一款好游戏</h1>
+      <p>一个专注内容与判断的游戏推荐站。不追热点、不刷榜，用持续更新的方式帮你发现真正值得花时间的作品。</p>
+      <div class="tagline">已持续更新 · 常来看一看</div>
+    </div>
+
+    <!-- 为什么再次访问 -->
+    <section>
+      <h2>为什么值得再次访问</h2>
+      <p>游戏库每天都在膨胀，但筛选成本也在变高。<a href="https://zhi-game.com.cn" style="color:#1e6b7c; text-decoration: none; border-bottom:1px solid #b7cdd8;">爱游戏</a> 不是一份静态列表，而是一个持续梳理的索引——每次回来都可能遇到新的推荐、不同的切入角度，以及被重新审视的老作品。</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <span class="emoji">📌</span>
+          <div class="card-title">收藏导向</div>
+          <p>把合心意的页面加入书签，隔段时间回来看，总会有更新内容，不必每次都从头翻找。</p>
+        </div>
+        <div class="card">
+          <span class="emoji">🔄</span>
+          <div class="card-title">持续修订</div>
+          <p>推荐语、作品状态、相关链接会随着时间修正，不是一次写完就不管的陈列。</p>
+        </div>
+        <div class="card">
+          <span class="emoji">🧩</span>
+          <div class="card-title">不同切面</div>
+          <p>同一款游戏可能从玩法、叙事、氛围等不同角度被重新介绍，每次阅读都有新收获。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关注与收藏 -->
+    <section>
+      <h2>保持关注的方式</h2>
+      <p>如果你习惯用浏览器收藏夹管理自己感兴趣的内容，将 <a href="https://zhi-game.com.cn" style="color:#1e6b7c; text-decoration: none; border-bottom:1px solid #b7cdd8;">爱游戏</a> 添加为书签是最直接的办法。除此之外：</p>
+      <ul>
+        <li>不定期回来浏览首页推荐，分类页面也会同步更新。</li>
+        <li>留意站内「新收录」或「最近更新」区域，它们会标注近期变动。</li>
+        <li>如果你有特别喜欢的类型或作品，站内搜索可以帮你快速定位过去的内容。</li>
+      </ul>
+      <div class="bookmark-reminder">
+        <strong style="display:block; margin-bottom:0.2rem; font-weight:500;">📎 保存这一页</strong>
+        把当前地址加入浏览器书签，下次想找游戏灵感时，直接从这里开始。你收藏的是 <a href="https://zhi-game.com.cn">爱游戏</a>，也是你个人的游戏关注列表。
+      </div>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section>
+      <h2>常见想法</h2>
+      <div class="faq-item">
+        <strong>这里的推荐会频繁变化吗？</strong>
+        <p>不会刻意追求日更，但会持续补充和修正。每次更新都会基于之前的内容做延伸或调整，而不是完全推翻重来。</p>
+      </div>
+      <div class="faq-item">
+        <strong>我上次看到的某款游戏还在吗？</strong>
+        <p>多数内容会长期保留，只有极少数因信息失效或不再适合推荐才会被移除。如果你找不到某款作品，可以试试站内搜索。</p>
+      </div>
+      <div class="faq-item">
+        <strong>需要注册或登录才能使用吗？</strong>
+        <p>不需要。所有推荐和分类都直接可见，你只需要一个浏览器就能完整浏览。收藏和关注完全由你自己在本地管理。</p>
+      </div>
+      <p style="margin-top:1rem; font-size:0.9rem; color:#54707d;">—— 更多问题可以浏览站内「关于」页面，或直接翻看已有内容。</p>
+    </section>
+
+    <!-- 说明区 + 底部链接 -->
+    <div class="footer-note">
+      <span>内容持续整理 · 专注游戏本身</span>
+      <span>
+        <a href="https://zhi-game.com.cn">爱游戏</a>
+      </span>
+    </div>
+
+  </div>
+</body>
+</html>
