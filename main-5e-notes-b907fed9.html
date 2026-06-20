@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5e对战平台 · 简明使用指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f7;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 0 1.5rem 3rem;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* ===== 顶部导航 ===== */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #e0e4ea;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .logo-area {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            color: #0b1e33;
+        }
+
+        .logo-area span {
+            background: #d9e1ec;
+            padding: 0.2rem 0.8rem;
+            border-radius: 24px;
+            font-size: 0.75rem;
+            font-weight: 400;
+            margin-left: 0.6rem;
+            color: #1f3a5f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            transition: border-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #5b7a9a;
+        }
+
+        /* ===== hero 区 ===== */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e6ebf2;
+            margin-bottom: 2.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 1rem;
+            color: #0b1e33;
+        }
+
+        .hero h1 small {
+            font-weight: 400;
+            font-size: 1rem;
+            color: #556b82;
+            margin-left: 0.6rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 720px;
+            color: #33475b;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero .guide-badge {
+            display: inline-block;
+            background: #e3e9f2;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #1f3a5f;
+            margin-top: 0.6rem;
+        }
+
+        /* ===== 卡片通用 ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 1.8rem 1.6rem;
+            border: 1px solid #e3e9f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #14273e;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card p {
+            color: #2c4056;
+            font-size: 0.98rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+
+        .card ul li {
+            padding: 0.3rem 0;
+            font-size: 0.94rem;
+            color: #2c4056;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+        }
+
+        .card ul li::before {
+            content: "·";
+            color: #6a7f99;
+            font-weight: 700;
+            display: inline-block;
+            width: 1rem;
+        }
+
+        /* ===== 场景模块 ===== */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0b1e33;
+            margin: 2.2rem 0 1rem;
+            border-left: 4px solid #5f7d9e;
+            padding-left: 1rem;
+        }
+
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 1.2rem 0 2.8rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.6rem 1.4rem;
+            border: 1px solid #dfe6ef;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .scene-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #14273e;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #2f4259;
+        }
+
+        /* ===== 常见说明 ===== */
+        .faq-block {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 2.2rem;
+            border: 1px solid #e3e9f0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-block h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0b1e33;
+            margin-bottom: 1.4rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #edf0f5;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1a314b;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item p {
+            font-size: 0.96rem;
+            color: #2f4259;
+        }
+
+        /* ===== 链接嵌入 ===== */
+        .inline-link {
+            color: #1f4a7a;
+            text-decoration: none;
+            border-bottom: 1px solid #bcc9da;
+            transition: border-color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #1f4a7a;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #dbdfe6;
+            font-size: 0.85rem;
+            color: #5a6f86;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.8rem;
+        }
+
+        .footer-note a {
+            color: #2c4e72;
+            text-decoration: none;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 响应 ===== */
+        @media (max-width: 640px) {
+            body {
+                padding: 0 1rem 2.5rem;
+            }
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+            .faq-block {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-grid, .scene-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 顶部导航 -->
+    <header class="topbar">
+        <div class="logo-area">
+            5e·指南
+            <span>对战平台</span>
+        </div>
+        <div class="nav-links">
+            <a href="#guide">简明指南</a>
+            <a href="#scenes">使用场景</a>
+            <a href="#faq">常见说明</a>
+        </div>
+    </header>
+
+    <!-- Hero 介绍 + 指南摘要 -->
+    <section class="hero" id="guide">
+        <h1>5e对战平台 <small>简明访问与使用指南</small></h1>
+        <p>
+            无论你是初次接触还是想更顺畅地使用，了解平台的基本结构和访问方式都能让体验更高效。
+            <a href="https://main-5e.com" class="inline-link">5e对战平台</a>
+            提供了对战匹配、数据统计和社区交流等核心功能。下文从访问提醒、场景适配和常见疑问三个角度为你梳理要点。
+        </p>
+        <div class="guide-badge">✦ 基于真实使用逻辑整理</div>
+    </section>
+
+    <!-- 三个核心介绍卡片（特点/提醒） -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>📋 访问前准备</h3>
+            <p>建议使用主流浏览器（Chrome / Edge / Firefox）访问，并保持系统时间正确。部分对战记录页面可能依赖本地存储，清理浏览器缓存前请留意平台内的说明。</p>
+            <ul>
+                <li>确认网络稳定，避免匹配中断</li>
+                <li>平台不要求额外插件，直接使用</li>
+                <li>新用户可先浏览公共对战数据</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>🧭 导航与模块</h3>
+            <p>平台主要分为对战大厅、个人数据面板、社区动态和赛事专区。各模块之间有清晰的入口，你可以在个人中心调整偏好设置。</p>
+            <ul>
+                <li>对战大厅：快速加入或创建房间</li>
+                <li>数据面板：查看历史对战与统计</li>
+                <li>社区动态：浏览公开讨论与资讯</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>⚙️ 常用提醒</h3>
+            <p>部分统计数据为实时更新，页面刷新后即可获取最新数据。如果遇到显示异常，可先检查浏览器缩放设置或尝试无痕模式。</p>
+            <ul>
+                <li>对战前确认角色与模式选项</li>
+                <li>赛后数据通常延迟1-2分钟</li>
+                <li>平台不会主动索要密码或验证码</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <h2 class="section-title" id="scenes">三个常见使用场景</h2>
+    <div class="scene-grid">
+        <div class="scene-card">
+            <h4>🎯 快速开始匹配</h4>
+            <p>进入对战大厅后，系统会根据你的偏好推荐房间。你也可以手动筛选模式、地图或对手区间。建议先查看公共对战列表，了解当前活跃房间的状态。</p>
+        </div>
+        <div class="scene-card">
+            <h4>📊 赛后复盘与数据</h4>
+            <p>每一场对战结束后，平台会自动记录关键数据。你可以在个人数据页查看趋势图、常用角色和胜负分布。数据可用于分析自身表现，但仅供参考。</p>
+        </div>
+        <div class="scene-card">
+            <h4>💬 社区交流与资讯</h4>
+            <p>社区板块包含公开讨论、赛事预告和玩家分享。你可以浏览热门话题，也可以发布符合社区规范的内容。注意保护个人隐私，不随意分享账号信息。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <section class="faq-block" id="faq">
+        <h2>常见说明 · 摘要</h2>
+
+        <div class="faq-item">
+            <strong>是否需要注册才能使用？</strong>
+            <p>平台部分功能（如浏览公共数据和查看赛事信息）无需登录。但参与对战、保存个人数据或发言则需要注册账号。注册流程简单，只需提供基本信息和有效邮箱。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>对战匹配的大致规则？</strong>
+            <p>匹配基于玩家设定的偏好以及当前在线人数动态分配。平台没有隐藏的“强制胜率”机制，匹配结果受多种因素影响。建议保持平常心参与对局。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>数据统计的更新频率？</strong>
+            <p>对战结束后，数据通常会在数分钟内更新至个人页面。高峰期可能稍有延迟，刷新页面即可查看最新数据。历史数据保留周期以平台实际设定为准。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>访问时遇到页面异常怎么办？</strong>
+            <p>可尝试清除浏览器缓存或使用无痕模式。如果问题持续，可以检查网络连接或稍后再试。平台不推荐安装非官方的辅助工具或脚本。</p>
+        </div>
+
+        <div style="margin-top: 1.2rem; font-size:0.95rem; background:#f7f9fc; padding:0.8rem 1rem; border-radius:20px; color:#1c334d;">
+            💡 更详细的功能介绍，可直接访问
+            <a href="https://main-5e.com" class="inline-link">5e对战平台</a>
+            并浏览各版块内的说明文字。所有内容以平台实际页面为准。
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="footer-note">
+        <span>基于公开信息整理的简明指南 · 仅供参考</span>
+        <span><a href="https://main-5e.com">5e对战平台</a></span>
+    </footer>
+</div>
+</body>
+</html>
